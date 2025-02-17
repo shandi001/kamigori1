@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Kamigori</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+   document.addEventListener("DOMContentLoaded", function() {
+        // Animasi muncul saat scroll
+        const elements = document.querySelectorAll(".fade-in");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("fade-in-active");
+                }
+            });
+        }, { threshold: 0.3 });
+
+        elements.forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll("a[href^='#']").forEach(anchor => {
+            anchor.addEventListener("click", function(event) {
+                event.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            });
+        });
+    });
+    </script>
+</head>
+<style>
+    .parallax {
+        background-image: url("/static/images/patung.jpg");
+        height: 400px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    /*animation*/
+    .fade-in{
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-in-active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+    .hover-animate {
+        transition: transform 0.8s ease, box-shadow 0.8s ease;
+    }
+    .hover-animate:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s ease
+        ;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+</style>
+<body class="bg-gradient-to-b from-gray-100 to-gray-300">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md p-6">
+        <h1 class="text-4xl font-extrabold text-center text-gray-800 tracking-wide">📜 History of Kamigori</h1>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="parallax">
+        <div class="max-w-5xl mx-auto mt-8 bg-white p-8 rounded-lg shadow-xl text-center fade-in">
+            <h2 class="text-4xl font-semibold text-gray-800 mt-6">The Legacy of Kamigori</h2>
+            <p class="text-gray-600 mt-4 text-lg">Discover the historical significance and cultural heritage of Kamigori.</p>
+        </div>
+    </div>
+
+    <!-- Sejarah Kamigori -->
+    <div class="max-w-5xl mx-auto mt-8 bg-white p-8 rounded-lg shadow-lg fade-in">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">🏯 Kamigori’s Historical Background</h2>
+        <p class="text-gray-600 text-lg leading-relaxed">
+            Kamigori is a historic town that has witnessed centuries of cultural and economic development.
+            It played a vital role in Japan’s feudal era, known for its influential samurai clans and rich traditions.
+        </p>
+    </div>
+
+    <!-- Fakta Menarik -->
+    <div class="max-w-5xl mx-auto mt-8 bg-white p-8 rounded-lg shadow-lg fade-in">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">📌 Interesting Facts</h2>
+        <ul class="list-disc list-inside text-gray-600 text-lg space-y-2">
+            <li>🏰 Founded over 400 years ago as a strategic location for trade and defense.</li>
+            <li>🎎 Home to ancient shrines and traditional festivals that attract tourists every year.</li>
+            <li>🏯 Known for its unique architectural styles influenced by the Edo period.</li>
+        </ul>
+    </div>
+
+    <!-- Gambar Tambahan -->
+    <div class="max-w-5xl mx-auto mt-8 p-8 rounded-lg bg-white shadow-lg text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">🌸 Kamigori’s Timeless Beauty</h2>
+        <div class="flex flex-wrap justify-center gap-6">
+            <div class="relative group">
+                <img src="{{ url_for('static', filename='images/temple.png') }}" alt="Ancient Shrine" 
+                    class="w-80 h-52 object-cover rounded-lg shadow-lg hover-animate">
+                <p class="text-gray-700 text-sm mt-2">⛩️ A sacred shrine from the Edo era</p>
+            </div>
+            <div class="relative group">
+                <img src="{{ url_for('static', filename='images/rumah.jpg') }}" alt="Traditional House" 
+                    class="w-80 h-52 object-cover rounded-lg shadow-lg hover-animate">
+                <p class="text-gray-700 text-sm mt-2">🏠 A beautifully preserved traditional house</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol Kembali -->
+    <div class="text-center mt-10">
+        <a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-800 transition duration-300 text-lg font-semibold">
+            🏠 Back to Home
+        </a>
+    </div>
+
+    <footer class="text-center mt-12 p-4 text-gray-700">
+        &copy; 2025 Kamigori Tourism | Designed with ❤️
+    </footer>
+
+</body>
+</html>

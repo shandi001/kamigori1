@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Beranda - Wisata Desa{% endblock %}
+
+{% block content %}
+    <section class="pengalaman-wisata">
+        <h2>Pengalaman Wisata</h2>
+        <div class="card-container">
+            <a href="{{ url_for('makanan') }}" class="card">🍽️ <strong>Makan</strong></a>
+            <a href="{{ url_for('minuman') }}" class="card">🍷 <strong>Minum</strong></a>
+            <a href="{{ url_for('budaya') }}" class="card">🎭 <strong>Budaya</strong></a>
+            <a href="{{ url_for('bersantai') }}" class="card">🌿 <strong>Bersantai</strong></a>
+        </div>
+    </section>
+{% endblock %}

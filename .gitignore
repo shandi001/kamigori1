@@ -1,0 +1,21 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+ntuser.dat*
+NTUSER.DAT*
+*.log
+
+# Ignore personal directories
+OneDrive/
+AppData/
+Saved Games/
+Downloads/
+Videos/
+Music/
+Contacts/
+Favorites/
+Links/
+Searches/
+
+# Ignore VSCode settings
+.vscode/

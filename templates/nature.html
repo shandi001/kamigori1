@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature - Trip To Kamigori</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll(".fade-in");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("fade-in-active");
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .image-card {
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .image-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 128, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-green-100 to-green-300">
+
+    <!-- Header -->
+    <header class="bg-green-600 text-white shadow-md p-6 text-center">
+        <h1 class="text-4xl font-bold">🌿 Nature in Kamigori</h1>
+        <p class="text-lg mt-2">Discover the stunning beauty of Kamigori’s landscapes</p>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="max-w-5xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-lg text-center fade-in">
+        <img src="{{ url_for('static', filename='images/pemandangan.jfif') }}" 
+             alt="Nature Kamigori" class="w-full h-96 object-cover rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-800 mt-4">Beautiful Scenery of Kamigori</h2>
+        <p class="text-gray-600 mt-2">Explore the breathtaking landscapes, lush forests, and serene rivers of Kamigori.</p>
+    </div>
+
+    <!-- Nature Gallery -->
+    <div class="max-w-5xl mx-auto mt-8">
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">🏞️ Explore More Nature</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Image 1 -->
+            <div class="bg-white p-4 rounded-lg shadow-lg text-center fade-in image-card">
+                <img src="{{ url_for('static', filename='images/hutan.jfif') }}" 
+                     alt="Lush Green Forest" class="w-full h-56 object-cover rounded-lg">
+                <h3 class="text-xl font-semibold mt-2">🌲 Lush Green Forest</h3>
+                <p class="text-gray-600 mt-1">A mesmerizing forest filled with ancient trees and diverse wildlife.</p>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="bg-white p-4 rounded-lg shadow-lg text-center fade-in image-card">
+                <img src="{{ url_for('static', filename='images/sungai.jpg') }}" 
+                     alt="Serene River" class="w-full h-56 object-cover rounded-lg">
+                <h3 class="text-xl font-semibold mt-2">🌊 Serene River</h3>
+                <p class="text-gray-600 mt-1">A peaceful river with crystal-clear waters, perfect for relaxation.</p>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="bg-white p-4 rounded-lg shadow-lg text-center fade-in image-card">
+                <img src="{{ url_for('static', filename='images/gunung.jpg') }}" 
+                     alt="Majestic Mountain" class="w-full h-56 object-cover rounded-lg">
+                <h3 class="text-xl font-semibold mt-2">⛰️ Majestic Mountain</h3>
+                <p class="text-gray-600 mt-1">A breathtaking mountain peak offering stunning sunrise views.</p>
+            </div>
+
+
+            <!-- Image 5 -->
+            <div class="bg-white p-4 rounded-lg shadow-lg text-center fade-in image-card">
+                <img src="{{ url_for('static', filename='images/waterfall.jfif') }}" 
+                     alt="Hidden Waterfall" class="w-full h-56 object-cover rounded-lg">
+                <h3 class="text-xl font-semibold mt-2">💦 Hidden Waterfall</h3>
+                <p class="text-gray-600 mt-1">A secret waterfall deep in the forest, a hidden natural wonder.</p>
+            </div>
+
+            <!-- Image 6 -->
+            <div class="bg-white p-4 rounded-lg shadow-lg text-center fade-in image-card">
+                <img src="{{ url_for('static', filename='images/sakura.jpg') }}" 
+                     alt="Cherry Blossom Park" class="w-full h-56 object-cover rounded-lg">
+                <h3 class="text-xl font-semibold mt-2">🌸 Cherry Blossom Park</h3>
+                <p class="text-gray-600 mt-1">A breathtaking scene of pink sakura flowers in full bloom.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-10">
+        <a href="/" class="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-800 transition duration-300 text-lg font-semibold">
+            🏠 Back to Home
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-12 p-4 text-gray-700">
+        &copy; 2025 Kamigori Nature | Designed with ❤️
+    </footer>
+
+</body>
+</html>

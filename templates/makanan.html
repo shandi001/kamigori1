@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Food in Kamigori</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animasi fade-in saat scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        .fade-in-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efek Hover pada Card */
+        .food-card {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .food-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Tombol Kembali */
+        .button-hover {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button-hover:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 255, 0.3);
+        }
+
+        /* Parallax header */
+        header {
+            background-image: url('/static/images/food_banner.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Animasi fade-in saat scroll
+            const elements = document.querySelectorAll(".fade-in");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("fade-in-active");
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header Parallax -->
+    <header class="relative h-64 flex items-center justify-center shadow-md text-center">
+        <div class="bg-black bg-opacity-50 p-6 rounded-lg">
+            <h1 class="text-4xl font-bold text-white drop-shadow-lg">Some Special Kamigori Foods!!</h1>
+        </div>
+    </header>
+
+    <!-- Konten Makanan -->
+    <div class="max-w-4xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Special Food</h2>
+        <ul class="space-y-4">
+            {% for makanan in makanan_list %}
+                <li class="p-4 border rounded-lg shadow hover:shadow-xl transition fade-in food-card">
+                    <img src="{{ url_for('static', filename='images/' + makanan.gambar)}}" alt="{{ makanan['nama']}}" class="w-full h-40 object-cover rounded-lg">
+                    <h3 class="text-xl font-semibold mt-2">{{ makanan.nama }}</h3>
+                    <p class="text-gray-600 mt-1">{{ makanan.deskripsi }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Tombol Kembali -->
+    <div class="text-center mt-10">
+        <a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md button-hover">
+            🏠 Back to Home
+        </a>
+    </div>
+
+</body>
+</html>
