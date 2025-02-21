@@ -21,7 +21,7 @@ CREATE TABLE makanan (
 cursor.executemany("""
 INSERT INTO makanan (nama, deskripsi, gambar) VALUES (?, ?, ?)
 """, [
-    ("圓心の由来", "One cannot speak of Harima without mentioning the Akamatsu. In the Middle Ages, the name of Akamatsu Jirozaemon Norimura (Nyuudo Enshin), who played a significant role as the founder of the revival of the Akamatsu clan that ruled Harima for two hundred and fifty years, is widely known.", "kue.jpg"),
+    ("圓心の由来", "Koshian paste is wrapped in habutae dough kneaded with soy sauce. Please enjoy the subtle aroma of soy sauce and the refined flavor of red beans..", "kue.jpg"),
     ("モロヘイヤ 羊羹", "Yokan, which has an elegant taste with a beautiful uguisu color kneaded with Moroheiya, a specialty of Kamigori Town, is perfect for tea!", "teh.jpg"),
     ("スノーボール", "This cookie has a crispy texture and is also made using jumbo peanuts. It is baked with ground peanuts, flour, butter, sugar, etc., and finally sprinkled with powdered sugar.", "snowball.jpg")
 ])
